@@ -69,6 +69,19 @@ RSpec.describe Ride do
        expect(visitor2.spending_money).to eq(4)
        expect(ride1.total_revenue).to eq(3)
     end
+
+    it 'will return false if visitor cant afford ride' do
+      visitor1 = Visitor.new('Bruce', 54, "$2")
+      ride1 = Ride.new({
+        name: 'Roller Coaster',
+        min_height: 54,
+        admission_fee: 2,
+        excitement: :thrilling
+        })
+
+      expect(ride1.board_rider(visitor1)).to eq(0) #(remaining spending money)
+      expect(ride1.board_rider(visitor1)).to eq(false)
+    end
   end
 
   describe '#eligibility checks' do

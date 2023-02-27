@@ -29,14 +29,17 @@ class Carnival
 
   def info_hash
     hash = {
-      :visitor_count => get_visitor_count,
+      :visitor_count => get_visitor_count.length,
 
-      :total_revenue => total_revenue
+      :total_revenue => total_revenue,
 
-      #:visitors => [{:visitor1=>[favorite_ride, money_spent], :visitor2=>[favorite_ride, money_spent]}],
+      :visitors => {
+        visitor1: [visitor1.favorite_ride, visitor1.money_spent],
+        visitor2: [visitor2.favorite_ride, visitor2.money_spent]
+        }   #struggling to figure out how to code this one
 
-      #:rides => [{:ride1=>[rider_log, total_revenue], :ride2=>[rider_log, total_revenue]}]
-     }
+        #:rides => [{:ride1=>[rider_log, total_revenue], :ride2=>[rider_log, total_revenue]}]
+    }
   end
 
   def get_visitor_count
@@ -44,6 +47,6 @@ class Carnival
     @rides.each do |ride|
       arr << ride.rider_log.keys
     end
-    arr.flatten.uniq.length
+    arr.flatten.uniq
   end
 end

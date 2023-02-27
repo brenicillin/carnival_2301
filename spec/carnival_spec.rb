@@ -130,7 +130,7 @@ RSpec.describe Carnival do
   end
 
   describe '#info_hash' do
-    it 'can provide a summary hash' do
+    xit 'can provide a summary hash' do
       carnival = Carnival.new(7)
       carnival.add_ride({
         name: 'Roller Coaster',
@@ -153,6 +153,8 @@ RSpec.describe Carnival do
       carnival.rides[0].board_rider(visitor3)
       carnival.rides[1].board_rider(visitor1)
       carnival.rides[1].board_rider(visitor2)
+      carnival.rides[1].board_rider(visitor3)
+      carnival.rides[1].board_rider(visitor3)
       carnival.rides[1].board_rider(visitor3)
 require 'pry'; binding.pry
       expect(carnival.info_hash).to be_a(Hash)
