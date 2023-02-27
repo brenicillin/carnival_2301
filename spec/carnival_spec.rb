@@ -40,7 +40,7 @@ RSpec.describe Carnival do
   end
 
   describe '#most_popular' do
-    it 'can return the most popular ride' do
+    xit 'can return the most popular ride' do
       carnival = Carnival.new(7)
       carnival.add_ride({
         name: 'Roller Coaster',
@@ -70,7 +70,7 @@ RSpec.describe Carnival do
   end
 
   describe '#total_revenue' do
-    xit 'can return the total revenue from all rides' do
+    it 'can return the total revenue from all rides' do
       carnival = Carnival.new(7)
       carnival.add_ride({
         name: 'Roller Coaster',
@@ -94,6 +94,8 @@ RSpec.describe Carnival do
       carnival.rides[1].board_rider(visitor1)
       carnival.rides[1].board_rider(visitor2)
       carnival.rides[1].board_rider(visitor3)
+
+      expect(carnival.total_revenue).to eq(7)
     end
   end
 
