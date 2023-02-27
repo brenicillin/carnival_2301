@@ -35,7 +35,93 @@ RSpec.describe Carnival do
         excitement: :gentle
        })
 
-        expect(carnival.rides).to all(be_a(Ride))
+       expect(carnival.rides).to all(be_a(Ride))
+    end
+  end
+
+  describe '#most_popular' do
+    it 'can return the most popular ride' do
+      carnival = Carnival.new(7)
+      carnival.add_ride({
+        name: 'Roller Coaster',
+        min_height: 54,
+        admission_fee: 2,
+        excitement: :thrilling
+        })
+      carnival.add_ride({
+        name: 'Carousel',
+        min_height: 24,
+        admission_fee: 1,
+        excitement: :gentle
+       })
+      visitor1 = Visitor.new('Bruce', 54, '$10')
+      visitor2 = Visitor.new('Tucker', 36, '$5')
+      visitor3 = Visitor.new('Penny', 64, '$15')
+
+      carnival.rides[0].board_rider(visitor1)
+      carnival.rides[0].board_rider(visitor2)
+      carnival.rides[0].board_rider(visitor3)
+      carnival.rides[1].board_rider(visitor1)
+      carnival.rides[1].board_rider(visitor2)
+      carnival.rides[1].board_rider(visitor3)
+      
+      expect(carnival.most_popular).to eq(carnival.rides[1])
+    end
+  end
+
+  describe '#total_revenue' do
+    xit 'can return the total revenue from all rides' do
+      carnival = Carnival.new(7)
+      carnival.add_ride({
+        name: 'Roller Coaster',
+        min_height: 54,
+        admission_fee: 2,
+        excitement: :thrilling
+        })
+      carnival.add_ride({
+        name: 'Carousel',
+        min_height: 24,
+        admission_fee: 1,
+        excitement: :gentle
+       })
+      visitor1 = Visitor.new('Bruce', 54, '$10')
+      visitor2 = Visitor.new('Tucker', 36, '$5')
+      visitor3 = Visitor.new('Penny', 64, '$15')
+
+      carnival.rides[0].board_rider(visitor1)
+      carnival.rides[0].board_rider(visitor2)
+      carnival.rides[0].board_rider(visitor3)
+      carnival.rides[1].board_rider(visitor1)
+      carnival.rides[1].board_rider(visitor2)
+      carnival.rides[1].board_rider(visitor3)
+    end
+  end
+
+  describe '#most_profitable' do
+    xit 'can return the most profitable of all rides' do
+      carnival = Carnival.new(7)
+      carnival.add_ride({
+        name: 'Roller Coaster',
+        min_height: 54,
+        admission_fee: 2,
+        excitement: :thrilling
+        })
+      carnival.add_ride({
+        name: 'Carousel',
+        min_height: 24,
+        admission_fee: 1,
+        excitement: :gentle
+       })
+      visitor1 = Visitor.new('Bruce', 54, '$10')
+      visitor2 = Visitor.new('Tucker', 36, '$5')
+      visitor3 = Visitor.new('Penny', 64, '$15')
+
+      carnival.rides[0].board_rider(visitor1)
+      carnival.rides[0].board_rider(visitor2)
+      carnival.rides[0].board_rider(visitor3)
+      carnival.rides[1].board_rider(visitor1)
+      carnival.rides[1].board_rider(visitor2)
+      carnival.rides[1].board_rider(visitor3)
     end
   end
 end
