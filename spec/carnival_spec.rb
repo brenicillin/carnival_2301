@@ -154,8 +154,8 @@ RSpec.describe Carnival do
       carnival.rides[1].board_rider(visitor1)
       carnival.rides[1].board_rider(visitor2)
       carnival.rides[1].board_rider(visitor3)
-
-      expect(carnival.info_hash).to be_a(hash)
+require 'pry'; binding.pry
+      expect(carnival.info_hash).to be_a(Hash)
     end
   end
 end
