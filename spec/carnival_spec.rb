@@ -128,4 +128,34 @@ RSpec.describe Carnival do
       expect(carnival.most_profitable).to eq(carnival.rides[0])
     end
   end
+
+  describe '#info_hash' do
+    it 'can provide a summary hash' do
+      carnival = Carnival.new(7)
+      carnival.add_ride({
+        name: 'Roller Coaster',
+        min_height: 54,
+        admission_fee: 2,
+        excitement: :thrilling
+        })
+      carnival.add_ride({
+        name: 'Carousel',
+        min_height: 24,
+        admission_fee: 1,
+        excitement: :gentle
+       })
+      visitor1 = Visitor.new('Bruce', 54, '$10')
+      visitor2 = Visitor.new('Tucker', 36, '$5')
+      visitor3 = Visitor.new('Penny', 64, '$15')
+
+      carnival.rides[0].board_rider(visitor1)
+      carnival.rides[0].board_rider(visitor2)
+      carnival.rides[0].board_rider(visitor3)
+      carnival.rides[1].board_rider(visitor1)
+      carnival.rides[1].board_rider(visitor2)
+      carnival.rides[1].board_rider(visitor3)
+
+      expect(carnival.info_hash).to be_a(hash)
+    end
+  end
 end
