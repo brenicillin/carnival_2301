@@ -49,4 +49,11 @@ class Carnival
     end
     arr.flatten.uniq
   end
+
+  # def visitors
+  #   hash = Hash.new
+  #   get_visitor_count.each do |visitor|
+  #     hash[(visitor.name)] => [visitor.favorite_ride, visitor.money_spent]
+  #   end
+  # end
 end
