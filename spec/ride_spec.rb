@@ -70,4 +70,24 @@ RSpec.describe Ride do
        expect(ride1.total_revenue).to eq(3)
     end
   end
+
+  describe '#eligibility checks' do
+    it 'can deny if height too low' do
+      ride3 = Ride.new({
+        name: 'Roller Coaster',
+        min_height: 54,
+        admission_fee: 2,
+        excitement: :thrilling
+        })
+        visitor1 = Visitor.new('Bruce', 54, '$10')
+        visitor2 = Visitor.new('Tucker', 36, '$5')
+        ride3.board_rider(visitor1)
+        ride3.board_rider(visitor2)
+
+        expect(ride3.rider_log).to eq({visitor1=>1})
+        expect(ride3.total_revenue).to eq(2)
+        expect(visitor1.spending_money).to eq(8)
+        expect(visitor2.spending_money).to eq(5)
+    end
+  end
 end
