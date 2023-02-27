@@ -11,9 +11,9 @@ class Carnival
     @rides << Ride.new(ride_hash)
   end
 
-  # def most_popular
-  #   @rides.
-  # end
+  def most_popular
+    @rides.max_by { |ride| ride.rider_log.values }
+  end
 
   def total_revenue
     revenue = []

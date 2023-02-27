@@ -40,7 +40,7 @@ RSpec.describe Carnival do
   end
 
   describe '#most_popular' do
-    xit 'can return the most popular ride' do
+    it 'can return the most popular ride' do
       carnival = Carnival.new(7)
       carnival.add_ride({
         name: 'Roller Coaster',
