@@ -14,4 +14,8 @@ class Visitor
   def format_money(money_string)
     money_string.gsub(/\D/,'').to_i
   end
+
+  def add_preference(preference)
+    @preferences << preference
+  end
 end

@@ -20,10 +20,11 @@ RSpec.describe Visitor do
   end
 
   describe '#add_preferences' do
-    it 'can add preferences to array'
-    visitor1 = Visitor.new('Bruce', 54, '$10')
+    it 'can add preferences to array' do
+      visitor1 = Visitor.new('Bruce', 54, '$10')
     
-    expect(visitor.add_preference(:gentle)).to eq([:gentle])
-    expect(visitor.add_preference(:water)).to eq([:gentle, :water])
+      expect(visitor1.add_preference(:gentle)).to eq([:gentle])
+      expect(visitor1.add_preference(:water)).to eq([:gentle, :water])
+    end
   end
 end
