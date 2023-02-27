@@ -100,7 +100,7 @@ RSpec.describe Carnival do
   end
 
   describe '#most_profitable' do
-    xit 'can return the most profitable of all rides' do
+    it 'can return the most profitable of all rides' do
       carnival = Carnival.new(7)
       carnival.add_ride({
         name: 'Roller Coaster',
@@ -124,6 +124,8 @@ RSpec.describe Carnival do
       carnival.rides[1].board_rider(visitor1)
       carnival.rides[1].board_rider(visitor2)
       carnival.rides[1].board_rider(visitor3)
+
+      expect(carnival.most_profitable).to eq(carnival.rides[0])
     end
   end
 end
